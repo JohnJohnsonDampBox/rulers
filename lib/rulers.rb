@@ -15,6 +15,9 @@ module Rulers
       controller = klass.new(env)
       text = controller.send(act)
       [200, {'Content-Type' => 'text/html'}, [text]]
+      rescue Exception => e
+        puts e.inspect
+      [500, {'Content-Type' => 'text/html'}, ['Error']]
     end
   end
 end
